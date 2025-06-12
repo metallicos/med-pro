@@ -1,0 +1,319 @@
+/* Ultra Modern & Stylish JavaFX Design */
+
+.root {
+    -fx-font-family: 'Inter', 'Segoe UI', 'Roboto', sans-serif;
+    -fx-background-color: #667eea;
+}
+
+.label, .text-field, .date-picker, .combo-box, .table-view, .button {
+    -fx-font-size: 14px;
+}
+
+/* Glassmorphism Form Container */
+.form-container {
+    -fx-background-color: rgba(255, 255, 255, 0.25);
+    -fx-border-color: rgba(255, 255, 255, 0.18);
+    -fx-border-width: 1;
+    -fx-border-radius: 24;
+    -fx-background-radius: 24;
+    -fx-padding: 40 40 40 40;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 20, 0.3, 0, 8);
+    -fx-spacing: 32;
+}
+
+.form-title {
+    -fx-font-size: 2.5em;
+    -fx-font-weight: bold;
+    -fx-text-fill: #fff;
+    -fx-padding: 0 0 20 0;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 4, 0.2, 0, 2);
+}
+
+.patient-avatar {
+    -fx-background-radius: 50%;
+    -fx-background-color: #667eea;
+    -fx-padding: 3;
+    -fx-effect: dropshadow(gaussian, rgba(102, 126, 234, 0.4), 15, 0.5, 0, 0);
+}
+
+.form-row {
+    -fx-spacing: 24;
+}
+
+.form-group {
+    -fx-spacing: 12;
+}
+
+.form-label {
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #000;
+}
+
+.form-input, .form-group .text-field, .form-group .date-picker {
+    -fx-background-color: rgba(255, 255, 255, 0.15);
+    -fx-border-color: rgba(255, 255, 255, 0.3);
+    -fx-border-width: 1;
+    -fx-border-radius: 12;
+    -fx-background-radius: 12;
+    -fx-padding: 12 16 12 16;
+    -fx-font-size: 14px;
+    -fx-text-fill: #fff;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 5, 0.2, 0, 2);
+}
+.menu-items {
+    -fx-text-fill: #000;
+}
+.form-input:focused, .form-group .text-field:focused, .form-group .date-picker:focused {
+    -fx-border-color: rgba(255, 255, 255, 0.6);
+    -fx-background-color: rgba(255, 255, 255, 0.25);
+    -fx-effect: dropshadow(gaussian, rgba(102, 126, 234, 0.3), 10, 0.4, 0, 0);
+}
+
+.form-actions {
+    -fx-spacing: 16;
+    -fx-padding: 24 0 24 0;
+}
+
+.primary-btn {
+    -fx-background-color: #667eea;
+    -fx-text-fill: #fff;
+    -fx-border-radius: 12;
+    -fx-background-radius: 12;
+    -fx-padding: 12 24 12 24;
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+    -fx-effect: dropshadow(gaussian, rgba(102, 126, 234, 0.4), 8, 0.3, 0, 4);
+}
+
+.primary-btn:hover {
+    -fx-background-color: #5a6fd8;
+    -fx-effect: dropshadow(gaussian, rgba(102, 126, 234, 0.6), 12, 0.4, 0, 6);
+}
+
+.secondary-btn {
+    -fx-background-color: #4facfe;
+    -fx-text-fill: #fff;
+    -fx-border-radius: 12;
+    -fx-background-radius: 12;
+    -fx-padding: 12 24 12 24;
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+    -fx-effect: dropshadow(gaussian, rgba(79, 172, 254, 0.4), 8, 0.3, 0, 4);
+}
+
+.danger-btn {
+    -fx-background-color: #ff6b6b;
+    -fx-text-fill: #fff;
+    -fx-border-radius: 12;
+    -fx-background-radius: 12;
+    -fx-padding: 12 24 12 24;
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+    -fx-effect: dropshadow(gaussian, rgba(255, 107, 107, 0.4), 8, 0.3, 0, 4);
+}
+
+.clear-btn {
+    -fx-background-color: rgba(255, 255, 255, 0.2);
+    -fx-border-color: rgba(255, 255, 255, 0.4);
+    -fx-border-width: 2;
+    -fx-text-fill: #fff;
+    -fx-border-radius: 12;
+    -fx-background-radius: 12;
+    -fx-padding: 12 24 12 24;
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+}
+
+.back-btn {
+    -fx-background-color: #fff;
+    -fx-text-fill: #667eea;
+    -fx-border-radius: 12;
+    -fx-background-radius: 12;
+    -fx-padding: 12 32 12 32;
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 8, 0.2, 0, 4);
+}
+
+.back-btn:hover {
+    -fx-background-color: #667eea;
+    -fx-text-fill: #fff;
+}
+
+.modern-table {
+    -fx-background-color: rgba(255, 255, 255, 0.15);
+    -fx-border-color: rgba(255, 255, 255, 0.18);
+    -fx-border-width: 1;
+    -fx-border-radius: 20;
+    -fx-background-radius: 20;
+    -fx-padding: 24;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 20, 0.3, 0, 8);
+    -fx-table-cell-border-color: rgba(255, 255, 255, 0.1);
+}
+
+.modern-table .column-header-background {
+    -fx-background-color: #667eea;
+    -fx-border-radius: 12 12 0 0;
+}
+
+.modern-table .column-header {
+    -fx-background-color: transparent;
+    -fx-size: 45;
+    -fx-border-width: 0 0 2 0;
+    -fx-border-color: transparent transparent rgba(255, 255, 255, 0.2) transparent;
+}
+
+.modern-table .column-header .label {
+    -fx-text-fill: #fff;
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+}
+
+.modern-table .table-row-cell {
+    -fx-background-color: rgba(255, 255, 255, 0.05);
+    -fx-border-color: rgba(255, 255, 255, 0.1);
+    -fx-text-fill: rgba(255, 255, 255, 0.9);
+    -fx-padding: 12 8 12 8;
+}
+
+.modern-table .table-row-cell:hover {
+    -fx-background-color: rgba(255, 255, 255, 0.15);
+}
+
+.modern-table .table-row-cell:selected {
+    -fx-background-color: #667eea;
+    -fx-text-fill: #fff;
+}
+
+.modern-table .table-cell {
+    -fx-text-fill: rgba(255, 255, 255, 0.9);
+    -fx-font-size: 13px;
+    -fx-padding: 8;
+}
+
+.menu-bar {
+    -fx-background-color: #2d3e50;
+    -fx-border-radius: 0 0 15 15;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 10, 0.3, 0, 3);
+}
+.menu {
+    -fx-text-fill: #fff;
+}
+.menu .label {
+    -fx-text-fill: #fff;
+}
+.menu-item {
+    -fx-background-color: transparent;
+    -fx-text-fill: #222; /* Set dropdown menu item text color to black for visibility */
+}
+.menu-item:focused {
+    -fx-background-color: #e0e7ef;
+    -fx-text-fill: #667eea; /* Highlighted menu item text color */
+}
+
+.hero-section {
+    -fx-background-color: #667eea;
+    -fx-border-radius: 20;
+    -fx-background-radius: 20;
+    -fx-padding: 40 40 40 40;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 20, 0.4, 0, 8);
+    -fx-spacing: 24;
+}
+
+.hero-title {
+    -fx-font-size: 2.5em;
+    -fx-font-weight: bold;
+    -fx-text-fill: #fff;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 4, 0.3, 0, 2);
+}
+
+.hero-subtitle {
+    -fx-font-size: 1.2em;
+    -fx-font-weight: normal;
+    -fx-text-fill: rgba(255, 255, 255, 0.9);
+    -fx-padding: 0 0 16 0;
+}
+
+.hero-logo {
+    -fx-background-radius: 50%;
+    -fx-effect: dropshadow(gaussian, rgba(255,255,255,0.3), 15, 0.5, 0, 0);
+}
+
+.card {
+    -fx-background-color: rgba(255, 255, 255, 0.25);
+    -fx-border-color: rgba(255, 255, 255, 0.18);
+    -fx-border-width: 1;
+    -fx-border-radius: 16;
+    -fx-background-radius: 16;
+    -fx-padding: 24 32 24 32;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 15, 0.3, 0, 5);
+    -fx-spacing: 16;
+}
+
+.card-title {
+    -fx-font-size: 1.4em;
+    -fx-font-weight: bold;
+    -fx-text-fill: #fff;
+}
+
+.card-desc {
+    -fx-font-size: 14px;
+    -fx-text-fill: rgba(255, 255, 255, 0.8);
+}
+
+.card-btn {
+    -fx-background-color: #667eea;
+    -fx-text-fill: #fff;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+    -fx-padding: 12 24 12 24;
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+    -fx-effect: dropshadow(gaussian, rgba(102, 126, 234, 0.4), 8, 0.3, 0, 4);
+}
+
+.card-btn:hover {
+    -fx-background-color: #5a6fd8;
+}
+
+/* --- Enhanced Patient Page Styles --- */
+.patient-page {
+    -fx-background-color: #e9eaf6; /* Softer light blue background for contrast */
+    -fx-padding: 40 40 40 40;
+    -fx-background-radius: 32;
+    -fx-effect: dropshadow(gaussian, rgba(102,126,234,0.10), 24, 0.3, 0, 10);
+}
+.patient-header {
+    -fx-font-size: 2.2em;
+    -fx-font-weight: bold;
+    -fx-text-fill: #4a3fa5;
+    -fx-padding: 0 0 28 0;
+}
+.patient-info-card {
+    -fx-background-color: #fff;
+    -fx-border-color: #d1d5e9;
+    -fx-border-width: 1.5;
+    -fx-border-radius: 20;
+    -fx-background-radius: 20;
+    -fx-padding: 32 40 32 40;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.10), 16, 0.2, 0, 4);
+    -fx-spacing: 20;
+}
+.patient-info-label {
+    -fx-font-size: 1.1em;
+    -fx-font-weight: bold;
+    -fx-text-fill: #667eea;
+}
+.patient-info-value {
+    -fx-font-size: 1.1em;
+    -fx-text-fill: #222;
+}
+.patient-avatar {
+    -fx-background-radius: 50%;
+    -fx-background-color: #667eea;
+    -fx-padding: 10;
+    -fx-effect: dropshadow(gaussian, rgba(102, 126, 234, 0.25), 16, 0.3, 0, 0);
+    -fx-border-color: #fff;
+    -fx-border-width: 3;
+}
