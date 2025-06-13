@@ -231,10 +231,13 @@
 }
 
 .modern-table .table-cell {
-    -fx-text-fill: #374151;
-    -fx-font-size: 13px;
+    -fx-text-fill: #000000;  /* Force black text for debugging */
+    -fx-font-size: 14px;
     -fx-padding: 8;
     -fx-alignment: CENTER_LEFT;
+    -fx-background-color: #ffffff;  /* Force white background for debugging */
+    -fx-border-color: #cccccc;      /* Add visible border for debugging */
+    -fx-border-width: 1;
 }
 
 /* Barre de menu */

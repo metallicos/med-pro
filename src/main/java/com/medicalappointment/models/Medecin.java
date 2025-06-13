@@ -47,8 +47,8 @@ public class Medecin {
 
     public void setSpecialite(String specialite) {
         this.specialite = specialite;
-    }
-
+    }    
+    
     public String getNumeroLicence() {
         return numeroLicence;
     }
@@ -65,8 +65,7 @@ public class Medecin {
                ", prenom=\'" + prenom + '\'' +
                ", specialite=\'" + specialite + '\'' +
                ", numeroLicence=\'" + numeroLicence + '\'' +
-               '}' + 
-               ';';
+               '}';
     }
 }
 

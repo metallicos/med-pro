@@ -61,15 +61,14 @@
     </HBox>
 
     <VBox spacing="16" styleClass="content-spacing">
-        <Label text="Registre des Patients" styleClass="card-title"/>
-        <TableView fx:id="patientTable" VBox.vgrow="ALWAYS" styleClass="modern-table">
+        <Label text="Registre des Patients" styleClass="card-title"/>        <TableView fx:id="patientTable" VBox.vgrow="ALWAYS">
             <columns>
-                <TableColumn fx:id="idColumn" text="ID" prefWidth="80"/>
-                <TableColumn fx:id="nomColumn" text="Nom" prefWidth="140"/>
-                <TableColumn fx:id="prenomColumn" text="Prénom" prefWidth="140"/>
-                <TableColumn fx:id="dateNaissanceColumn" text="Date de Naissance" prefWidth="160"/>
-                <TableColumn fx:id="adresseColumn" text="Adresse" prefWidth="220"/>
-                <TableColumn fx:id="telephoneColumn" text="Téléphone" prefWidth="160"/>
+                <TableColumn fx:id="idColumn" text="ID" prefWidth="80" minWidth="60"/>
+                <TableColumn fx:id="nomColumn" text="Nom" prefWidth="140" minWidth="100"/>
+                <TableColumn fx:id="prenomColumn" text="Prénom" prefWidth="140" minWidth="100"/>
+                <TableColumn fx:id="dateNaissanceColumn" text="Date de Naissance" prefWidth="160" minWidth="120"/>
+                <TableColumn fx:id="adresseColumn" text="Adresse" prefWidth="220" minWidth="150"/>
+                <TableColumn fx:id="telephoneColumn" text="Téléphone" prefWidth="160" minWidth="120"/>
             </columns>
         </TableView>
     </VBox>

@@ -11,10 +11,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.List;
 
 public class MedecinController {
 
@@ -59,29 +59,64 @@ public class MedecinController {
             e.printStackTrace();
             // Optionally, show an alert or log the error
         }
-    }
-
-    @FXML
+    }    @FXML
     public void initialize() {
-        idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
-        nomColumn.setCellValueFactory(new PropertyValueFactory<>("nom"));
-        prenomColumn.setCellValueFactory(new PropertyValueFactory<>("prenom"));
-        specialiteColumn.setCellValueFactory(new PropertyValueFactory<>("specialite"));
-        numeroLicenceColumn.setCellValueFactory(new PropertyValueFactory<>("numeroLicence"));
+        System.out.println("Initializing MedecinController...");
+        
+        // Initialize table columns with explicit cell value factories
+        idColumn.setCellValueFactory(cellData -> {
+            Integer id = cellData.getValue().getId();
+            System.out.println("Setting ID cell value: " + id);
+            return new javafx.beans.property.SimpleIntegerProperty(id).asObject();
+        });
+        
+        nomColumn.setCellValueFactory(cellData -> {
+            String nom = cellData.getValue().getNom();
+            System.out.println("Setting Nom cell value: " + nom);
+            return new javafx.beans.property.SimpleStringProperty(nom);
+        });
+        
+        prenomColumn.setCellValueFactory(cellData -> {
+            String prenom = cellData.getValue().getPrenom();
+            System.out.println("Setting Prenom cell value: " + prenom);
+            return new javafx.beans.property.SimpleStringProperty(prenom);
+        });
+        
+        specialiteColumn.setCellValueFactory(cellData -> {
+            String specialite = cellData.getValue().getSpecialite();
+            System.out.println("Setting Specialite cell value: " + specialite);
+            return new javafx.beans.property.SimpleStringProperty(specialite);
+        });
+        
+        numeroLicenceColumn.setCellValueFactory(cellData -> {
+            String numeroLicence = cellData.getValue().getNumeroLicence();
+            System.out.println("Setting NumeroLicence cell value: " + numeroLicence);
+            return new javafx.beans.property.SimpleStringProperty(numeroLicence);
+        });
 
         medecinList = FXCollections.observableArrayList();
         medecinTable.setItems(medecinList);
+        System.out.println("Table items set to observable list");
 
         loadMedecins();
 
         medecinTable.getSelectionModel().selectedItemProperty().addListener(
                 (observable, oldValue, newValue) -> showMedecinDetails(newValue));
-    }
-
-    private void loadMedecins() {
+        
+        System.out.println("MedecinController initialization complete");
+    }private void loadMedecins() {
         try {
             medecinList.clear();
-            medecinList.addAll(medecinService.getAllMedecins());
+            List<Medecin> medecins = medecinService.getAllMedecins();
+            System.out.println("Loaded " + medecins.size() + " medecins from database");
+            for (Medecin m : medecins) {
+                System.out.println("Medecin: " + m.getId() + " - " + m.getNom() + " " + m.getPrenom());
+            }
+            medecinList.addAll(medecins);
+            System.out.println("Observable list size: " + medecinList.size());
+            
+            // Force table refresh
+            medecinTable.refresh();
         } catch (ServiceException e) {
             showAlert(Alert.AlertType.ERROR, "Error", "Failed to load medecins: " + e.getMessage());
         }
@@ -96,9 +131,7 @@ public class MedecinController {
         } else {
             clearFields();
         }
-    }
-
-    @FXML
+    }    @FXML
     private void handleAddMedecin() {
         try {
             Medecin newMedecin = new Medecin(
@@ -108,7 +141,9 @@ public class MedecinController {
                     specialiteField.getText(),
                     numeroLicenceField.getText()
             );
+            System.out.println("Adding medecin: " + newMedecin.getNom() + " " + newMedecin.getPrenom());
             medecinService.addMedecin(newMedecin);
+            System.out.println("Medecin added successfully with ID: " + newMedecin.getId());
             showAlert(Alert.AlertType.INFORMATION, "Success", "Medecin added successfully!");
             loadMedecins();
             clearFields();

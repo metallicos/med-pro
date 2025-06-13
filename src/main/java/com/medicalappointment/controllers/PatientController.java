@@ -11,11 +11,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.util.List;
 
 public class PatientController {
 
@@ -64,33 +64,72 @@ public class PatientController {
             e.printStackTrace();
             // Optionally, show an alert or log the error
         }
-    }
-
-    @FXML
+    }    @FXML
     public void initialize() {
-        // Initialize table columns
-        idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
-        nomColumn.setCellValueFactory(new PropertyValueFactory<>("nom"));
-        prenomColumn.setCellValueFactory(new PropertyValueFactory<>("prenom"));
-        dateNaissanceColumn.setCellValueFactory(new PropertyValueFactory<>("dateNaissance"));
-        adresseColumn.setCellValueFactory(new PropertyValueFactory<>("adresse"));
-        telephoneColumn.setCellValueFactory(new PropertyValueFactory<>("telephone"));
+        System.out.println("Initializing PatientController...");
+        
+        // Initialize table columns with explicit cell value factories
+        idColumn.setCellValueFactory(cellData -> {
+            Integer id = cellData.getValue().getId();
+            System.out.println("Setting ID cell value: " + id);
+            return new javafx.beans.property.SimpleIntegerProperty(id).asObject();
+        });
+        
+        nomColumn.setCellValueFactory(cellData -> {
+            String nom = cellData.getValue().getNom();
+            System.out.println("Setting Nom cell value: " + nom);
+            return new javafx.beans.property.SimpleStringProperty(nom);
+        });
+        
+        prenomColumn.setCellValueFactory(cellData -> {
+            String prenom = cellData.getValue().getPrenom();
+            System.out.println("Setting Prenom cell value: " + prenom);
+            return new javafx.beans.property.SimpleStringProperty(prenom);
+        });
+        
+        dateNaissanceColumn.setCellValueFactory(cellData -> {
+            java.time.LocalDate dateNaissance = cellData.getValue().getDateNaissance();
+            System.out.println("Setting DateNaissance cell value: " + dateNaissance);
+            return new javafx.beans.property.SimpleObjectProperty<>(dateNaissance);
+        });
+        
+        adresseColumn.setCellValueFactory(cellData -> {
+            String adresse = cellData.getValue().getAdresse();
+            System.out.println("Setting Adresse cell value: " + adresse);
+            return new javafx.beans.property.SimpleStringProperty(adresse);
+        });
+        
+        telephoneColumn.setCellValueFactory(cellData -> {
+            String telephone = cellData.getValue().getTelephone();
+            System.out.println("Setting Telephone cell value: " + telephone);
+            return new javafx.beans.property.SimpleStringProperty(telephone);
+        });
 
         patientList = FXCollections.observableArrayList();
         patientTable.setItems(patientList);
-
-        // Load patients when the view is initialized
+        System.out.println("Table items set to observable list");        // Load patients when the view is initialized
         loadPatients();
 
         // Add listener to table selection to populate fields
         patientTable.getSelectionModel().selectedItemProperty().addListener(
                 (observable, oldValue, newValue) -> showPatientDetails(newValue));
+        
+        System.out.println("PatientController initialization complete");
     }
 
     private void loadPatients() {
         try {
             patientList.clear();
-            patientList.addAll(patientService.getAllPatients());
+            List<Patient> patients = patientService.getAllPatients();
+            System.out.println("Loaded " + patients.size() + " patients from database");
+            for (Patient p : patients) {
+                System.out.println("Patient: " + p.getId() + " - " + p.getNom() + " " + p.getPrenom());
+            }
+            patientList.addAll(patients);
+            System.out.println("Observable list size: " + patientList.size());
+            
+            // Force table refresh
+            patientTable.refresh();
         } catch (ServiceException e) {
             showAlert(Alert.AlertType.ERROR, "Error", "Failed to load patients: " + e.getMessage());
         }
@@ -106,9 +145,7 @@ public class PatientController {
         } else {
             clearFields();
         }
-    }
-
-    @FXML
+    }    @FXML
     private void handleAddPatient() {
         try {
             Patient newPatient = new Patient(
@@ -119,7 +156,9 @@ public class PatientController {
                     adresseField.getText(),
                     telephoneField.getText()
             );
+            System.out.println("Adding patient: " + newPatient.getNom() + " " + newPatient.getPrenom());
             patientService.addPatient(newPatient);
+            System.out.println("Patient added successfully with ID: " + newPatient.getId());
             showAlert(Alert.AlertType.INFORMATION, "Success", "Patient added successfully!");
             loadPatients();
             clearFields();

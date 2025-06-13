@@ -57,8 +57,7 @@ public class RendezVous {
 
     public void setMotif(String motif) {
         this.motif = motif;
-    }
-
+    }    
     @Override
     public String toString() {
         return "RendezVous{" +
@@ -67,8 +66,7 @@ public class RendezVous {
                ", medecin=" + medecin.getNom() + " " + medecin.getPrenom() +
                ", dateHeure=" + dateHeure +
                ", motif=\'" + motif + '\'' +
-               '}' + 
-               ';';
+               '}';
     }
 }
 

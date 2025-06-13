@@ -66,8 +66,7 @@ public class Patient {
 
     public void setTelephone(String telephone) {
         this.telephone = telephone;
-    }
-
+    }    
     @Override
     public String toString() {
         return "Patient{" +
@@ -77,7 +76,6 @@ public class Patient {
                ", dateNaissance=" + dateNaissance +
                ", adresse=\'" + adresse + '\'' +
                ", telephone=\'" + telephone + '\'' +
-               '\'' + 
                '}';
     }
 }

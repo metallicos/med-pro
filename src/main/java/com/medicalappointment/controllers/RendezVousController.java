@@ -15,7 +15,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -24,6 +23,7 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+import java.util.List;
 import java.util.List;
 
 public class RendezVousController {
@@ -78,30 +78,53 @@ public class RendezVousController {
             e.printStackTrace();
             // Optionally, show an alert or log the error
         }
-    }
-
-    @FXML
+    }    @FXML
     public void initialize() {
-        idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
+        System.out.println("Initializing RendezVousController...");
+        
+        idColumn.setCellValueFactory(cellData -> {
+            Integer id = cellData.getValue().getId();
+            System.out.println("Setting ID cell value: " + id);
+            return new javafx.beans.property.SimpleIntegerProperty(id).asObject();
+        });
+        
         patientColumn.setCellValueFactory(cellData -> {
             Patient patient = cellData.getValue().getPatient();
-            return new javafx.beans.property.SimpleStringProperty(patient.getNom() + " " + patient.getPrenom());
+            String patientName = patient.getNom() + " " + patient.getPrenom();
+            System.out.println("Setting Patient cell value: " + patientName);
+            return new javafx.beans.property.SimpleStringProperty(patientName);
         });
+        
         medecinColumn.setCellValueFactory(cellData -> {
             Medecin medecin = cellData.getValue().getMedecin();
-            return new javafx.beans.property.SimpleStringProperty(medecin.getNom() + " " + medecin.getPrenom());
+            String medecinName = medecin.getNom() + " " + medecin.getPrenom();
+            System.out.println("Setting Medecin cell value: " + medecinName);
+            return new javafx.beans.property.SimpleStringProperty(medecinName);
         });
-        dateHeureColumn.setCellValueFactory(new PropertyValueFactory<>("dateHeure"));
-        motifColumn.setCellValueFactory(new PropertyValueFactory<>("motif"));
+        
+        dateHeureColumn.setCellValueFactory(cellData -> {
+            java.time.LocalDateTime dateHeure = cellData.getValue().getDateHeure();
+            System.out.println("Setting DateHeure cell value: " + dateHeure);
+            return new javafx.beans.property.SimpleObjectProperty<>(dateHeure);
+        });
+        
+        motifColumn.setCellValueFactory(cellData -> {
+            String motif = cellData.getValue().getMotif();
+            System.out.println("Setting Motif cell value: " + motif);
+            return new javafx.beans.property.SimpleStringProperty(motif);
+        });
 
         rendezVousList = FXCollections.observableArrayList();
         rendezVousTable.setItems(rendezVousList);
+        System.out.println("Table items set to observable list");
 
         loadPatientsAndMedecins();
         loadRendezVous();
 
         rendezVousTable.getSelectionModel().selectedItemProperty().addListener(
                 (observable, oldValue, newValue) -> showRendezVousDetails(newValue));
+        
+        System.out.println("RendezVousController initialization complete");
     }
 
     private void loadPatientsAndMedecins() {
@@ -113,12 +136,19 @@ public class RendezVousController {
         } catch (ServiceException e) {
             showAlert(Alert.AlertType.ERROR, "Error", "Failed to load patients or medecins: " + e.getMessage());
         }
-    }
-
-    private void loadRendezVous() {
+    }    private void loadRendezVous() {
         try {
             rendezVousList.clear();
-            rendezVousList.addAll(rendezVousService.getAllRendezVous());
+            List<RendezVous> rendezVous = rendezVousService.getAllRendezVous();
+            System.out.println("Loaded " + rendezVous.size() + " rendez-vous from database");
+            for (RendezVous rv : rendezVous) {
+                System.out.println("RendezVous: " + rv.getId() + " - " + rv.getPatient().getNom() + " with " + rv.getMedecin().getNom());
+            }
+            rendezVousList.addAll(rendezVous);
+            System.out.println("Observable list size: " + rendezVousList.size());
+            
+            // Force table refresh
+            rendezVousTable.refresh();
         } catch (ServiceException e) {
             showAlert(Alert.AlertType.ERROR, "Error", "Failed to load rendez-vous: " + e.getMessage());
         }
@@ -158,16 +188,16 @@ public class RendezVousController {
                 return;
             }
 
-            LocalDateTime dateTime = LocalDateTime.of(date, time);
-
-            RendezVous newRendezVous = new RendezVous(
+            LocalDateTime dateTime = LocalDateTime.of(date, time);            RendezVous newRendezVous = new RendezVous(
                     0, // ID will be generated by DB
                     selectedPatient,
                     selectedMedecin,
                     dateTime,
                     motif
             );
+            System.out.println("Adding rendez-vous: " + selectedPatient.getNom() + " with " + selectedMedecin.getNom());
             rendezVousService.addRendezVous(newRendezVous);
+            System.out.println("RendezVous added successfully with ID: " + newRendezVous.getId());
             showAlert(Alert.AlertType.INFORMATION, "Success", "Rendez-vous added successfully!");
             loadRendezVous();
             clearFields();
