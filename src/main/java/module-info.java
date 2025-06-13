@@ -1,10 +1,11 @@
 module com.medicalappointment {
     requires javafx.controls;
     requires javafx.fxml;
+    requires javafx.graphics;
     requires java.sql;
     requires javafx.base;
 
-    opens com.medicalappointment to javafx.fxml;
+    opens com.medicalappointment to javafx.fxml, javafx.graphics;
     opens com.medicalappointment.controllers to javafx.fxml;
     opens com.medicalappointment.models to javafx.base;
 
