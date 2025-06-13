@@ -174,7 +174,7 @@ public class MedecinController {
         try {
             Parent root = FXMLLoader.load(getClass().getResource("/com/medicalappointment/views/main_view.fxml"));
             Scene scene = new Scene(root, 800, 600);
-            scene.getStylesheets().add(getClass().getResource("/com/medicalappointment/views/style.css").toExternalForm());
+            scene.getStylesheets().add(getClass().getResource("/com/medicalappointment/css/style.css").toExternalForm());
             Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
             stage.setScene(scene);
             stage.setTitle("Medical Appointment Management");

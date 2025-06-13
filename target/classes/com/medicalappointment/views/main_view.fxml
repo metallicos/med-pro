@@ -12,13 +12,13 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.layout.Region?>
 
-<BorderPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.medicalappointment.controllers.MainController" stylesheets="@javafx11_compatible_style.css">
+<BorderPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.medicalappointment.controllers.MainController" stylesheets="@../css/javafx11_compatible_style.css">
     <top>
         <VBox spacing="24" styleClass="section-spacing">
             <HBox alignment="CENTER" spacing="24" styleClass="hero-section">
                 <ImageView fitHeight="96" fitWidth="96" styleClass="hero-logo">
                     <image>
-                        <Image url="@medical_logo.png" />
+                        <Image url="@../images/medical_logo.png" />
                     </image>
                 </ImageView>
                 <VBox alignment="CENTER_LEFT" spacing="8">
@@ -57,7 +57,7 @@
                 <VBox styleClass="card animated-hover" alignment="CENTER">
                     <ImageView fitHeight="64" fitWidth="64">
                         <image>
-                            <Image url="@patient_avatar.png" />
+                            <Image url="@../images/patient_avatar.png" />
                         </image>
                     </ImageView>
                     <Label text="Gestion des Patients" styleClass="card-title" />
@@ -67,7 +67,7 @@
                 <VBox styleClass="card animated-hover" alignment="CENTER">
                     <ImageView fitHeight="64" fitWidth="64">
                         <image>
-                            <Image url="@doctor_avatar.png" />
+                            <Image url="@../images/doctor_avatar.png" />
                         </image>
                     </ImageView>
                     <Label text="Équipe Médicale" styleClass="card-title" />
@@ -77,7 +77,7 @@
                 <VBox styleClass="card animated-hover" alignment="CENTER">
                     <ImageView fitHeight="64" fitWidth="64">
                         <image>
-                            <Image url="@medical_logo.png" />
+                            <Image url="@../images/medical_logo.png" />
                         </image>
                     </ImageView>
                     <Label text="Planning Intelligent" styleClass="card-title" />

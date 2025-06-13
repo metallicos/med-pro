@@ -23,7 +23,7 @@ public class MainController {
             // Load login view
             Parent root = FXMLLoader.load(getClass().getResource("/com/medicalappointment/views/login_view.fxml"));
             Scene scene = new Scene(root, 400, 500);
-            scene.getStylesheets().add(getClass().getResource("/com/medicalappointment/views/style.css").toExternalForm());
+            scene.getStylesheets().add(getClass().getResource("/com/medicalappointment/css/style.css").toExternalForm());
 
             Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
             stage.setScene(scene);
@@ -40,7 +40,7 @@ public class MainController {
         try {
             Parent root = FXMLLoader.load(getClass().getResource("/com/medicalappointment/views/patient_view.fxml"));
             Scene scene = new Scene(root, 800, 600);
-            scene.getStylesheets().add(getClass().getResource("/com/medicalappointment/views/style.css").toExternalForm());
+            scene.getStylesheets().add(getClass().getResource("/com/medicalappointment/css/style.css").toExternalForm());
             Stage stage = (Stage) ((event.getSource() instanceof Button)
                 ? ((Button) event.getSource()).getScene().getWindow()
                 : ((MenuItem) event.getSource()).getParentPopup().getOwnerWindow());

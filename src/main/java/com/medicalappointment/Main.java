@@ -19,7 +19,7 @@ public class Main extends Application {
         Parent root = loader.load();
 
         Scene scene = new Scene(root, 400, 500);
-        scene.getStylesheets().add(getClass().getResource("/com/medicalappointment/views/style.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getResource("/com/medicalappointment/css/style.css").toExternalForm());
         primaryStage.setTitle("MediCare Pro Login");
         primaryStage.setScene(scene);
         primaryStage.show();

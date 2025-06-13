@@ -54,9 +54,8 @@ public class LoginController {
             currentUser = authenticationService.authenticate(username, password);
             
             // Load main view after successful login
-            Parent root = FXMLLoader.load(getClass().getResource("/com/medicalappointment/views/main_view.fxml"));
-            Scene scene = new Scene(root, 800, 600);
-            scene.getStylesheets().add(getClass().getResource("/com/medicalappointment/views/style.css").toExternalForm());
+            Parent root = FXMLLoader.load(getClass().getResource("/com/medicalappointment/views/main_view.fxml"));            Scene scene = new Scene(root, 800, 600);
+            scene.getStylesheets().add(getClass().getResource("/com/medicalappointment/css/style.css").toExternalForm());
             
             Stage stage = (Stage) usernameField.getScene().getWindow();
             stage.setScene(scene);

@@ -9,10 +9,9 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.image.Image?>
 
-<VBox alignment="CENTER" spacing="20" styleClass="login-container" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.medicalappointment.controllers.LoginController">
-    <ImageView fitHeight="120" fitWidth="120" styleClass="login-logo">
+<VBox alignment="CENTER" spacing="20" styleClass="login-container" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.medicalappointment.controllers.LoginController">    <ImageView fitHeight="120" fitWidth="120" styleClass="login-logo">
         <image>
-            <Image url="@medical_logo.png"/>
+            <Image url="@../images/medical_logo.png"/>
         </image>
     </ImageView>
     
