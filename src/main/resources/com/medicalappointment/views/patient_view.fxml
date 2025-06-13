@@ -36,14 +36,14 @@
             </VBox>
         </HBox>
         
-        <HBox spacing="24" alignment="CENTER" styleClass="form-row">
-            <VBox spacing="12" styleClass="form-group">
+        <HBox spacing="24" alignment="CENTER" styleClass="">
+            <VBox spacing="12" styleClass="">
                 <Label text="Date de Naissance" styleClass="form-label"/>
-                <DatePicker fx:id="dateNaissancePicker" promptText="Sélectionnez la date" styleClass="form-input"/>
+                <DatePicker fx:id="dateNaissancePicker" promptText="Sélectionnez la date" styleClass=""/>
             </VBox>
             <VBox spacing="12" styleClass="form-group">
                 <Label text="Numéro de Téléphone" styleClass="form-label"/>
-                <TextField fx:id="telephoneField" promptText="+33 6 12 34 56 78" styleClass="form-input"/>
+                <TextField fx:id="telephoneField" promptText="+212 6 12 34 56 78" styleClass="form-input"/>
             </VBox>
         </HBox>
         
