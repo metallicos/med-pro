@@ -8,9 +8,9 @@
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SeparatorMenuItem?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.layout.Region?>
 
 <BorderPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.medicalappointment.controllers.MainController" stylesheets="@../css/javafx11_compatible_style.css">
     <top>
@@ -26,31 +26,41 @@
                     <Label text="Plateforme de gestion médicale nouvelle génération" styleClass="hero-subtitle" />
                 </VBox>
             </HBox>
-            <HBox alignment="CENTER" styleClass="menu-container">
-                <MenuBar styleClass="menu-bar" HBox.hgrow="ALWAYS">
+            
+            <!-- Expanded Menu Container with More Spacing -->
+            <HBox alignment="CENTER" spacing="0" styleClass="menu-container">
+                <MenuBar styleClass="menu-bar expanded-menu" prefWidth="900" maxWidth="1200">
                     <menus>
-                        <Menu text="Patients">
+                        <Menu text="Patients" styleClass="menu-item-spaced">
                             <items>
-                                <MenuItem text="Gerer les Patients" onAction="#handleManagePatients"/>
+                                <MenuItem text="Gérer les Patients" onAction="#handleManagePatients"/>
                             </items>
                         </Menu>
-                        <Menu text="Medecins">
+                        
+                        <Menu text="Médecins" styleClass="menu-item-spaced">
                             <items>
-                                <MenuItem text="Gerer les Medecins" onAction="#handleManageMedecins"/>
+                                <MenuItem text="Gérer les Médecins" onAction="#handleManageMedecins"/>
                             </items>
                         </Menu>
-                        <Menu text="Rendez-vous">
+                        
+                        <Menu text="Rendez-vous" styleClass="menu-item-spaced">
                             <items>
-                                <MenuItem text="Gerer les Rendez-vous" onAction="#handleManageRendezVous"/>
+                                <MenuItem text="Gérer les Rendez-vous" onAction="#handleManageRendezVous"/>
+                            </items>
+                        </Menu>
+                        
+                        <Menu text="Système" styleClass="menu-item-spaced">
+                            <items>
+                                <SeparatorMenuItem />
+                                <MenuItem text="Déconnexion" onAction="#handleLogout" styleClass="logout-menu-item"/>
                             </items>
                         </Menu>
                     </menus>
                 </MenuBar>
-                <Region HBox.hgrow="ALWAYS" />
-                <Button text="Déconnexion" onAction="#handleLogout" styleClass="logout-btn"/>
             </HBox>
         </VBox>
     </top>
+    
     <center>
         <VBox alignment="CENTER" spacing="48" styleClass="content-spacing">
             <HBox alignment="CENTER" spacing="32">
@@ -64,6 +74,7 @@
                     <Label text="Créez et gérez les dossiers patients avec une interface intuitive et sécurisée. Accès rapide aux informations essentielles." styleClass="card-desc" />
                     <Button text="Accéder aux Patients" styleClass="card-btn" onAction="#handleManagePatients" />
                 </VBox>
+                
                 <VBox styleClass="card animated-hover" alignment="CENTER">
                     <ImageView fitHeight="64" fitWidth="64">
                         <image>
@@ -74,6 +85,7 @@
                     <Label text="Administrez les profils des médecins, leurs spécialités et disponibilités. Optimisez la gestion de votre équipe." styleClass="card-desc" />
                     <Button text="Gérer l'Équipe" styleClass="card-btn" onAction="#handleManageMedecins" />
                 </VBox>
+                
                 <VBox styleClass="card animated-hover" alignment="CENTER">
                     <ImageView fitHeight="64" fitWidth="64">
                         <image>
@@ -87,4 +99,10 @@
             </HBox>
         </VBox>
     </center>
+    
+    <bottom>
+        <HBox alignment="CENTER" spacing="16" styleClass="footer">
+            <Label text="© 2023 MediCare Pro - Tous droits réservés" styleClass="footer-text"/>
+        </HBox>
+    </bottom>
 </BorderPane>

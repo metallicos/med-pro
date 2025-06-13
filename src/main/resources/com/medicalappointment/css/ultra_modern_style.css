@@ -193,7 +193,6 @@
     -fx-text-fill: #6b7280;
     -fx-border-radius: 12;
     -fx-background-radius: 12;
-    -fx-padding: 16 32 16 32;
     -fx-font-weight: 600;
     -fx-font-size: 15px;
     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.05), 8, 0.2, 0, 2);
@@ -215,7 +214,6 @@
     -fx-border-width: 1.5;
     -fx-border-radius: 12;
     -fx-background-radius: 12;
-    -fx-padding: 16 32 16 32;
     -fx-font-weight: 600;
     -fx-font-size: 15px;
     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.05), 8, 0.2, 0, 2);

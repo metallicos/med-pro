@@ -147,7 +147,6 @@
     -fx-text-fill: #6c757d;
     -fx-border-radius: 8;
     -fx-background-radius: 8;
-    -fx-padding: 12 24 12 24;
     -fx-font-weight: 600;
     -fx-font-size: 14px;
 }
@@ -164,7 +163,6 @@
     -fx-border-width: 1.5;
     -fx-border-radius: 8;
     -fx-background-radius: 8;
-    -fx-padding: 12 24 12 24;
     -fx-font-weight: 600;
     -fx-font-size: 14px;
 }

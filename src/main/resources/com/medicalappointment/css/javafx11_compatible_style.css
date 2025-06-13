@@ -153,7 +153,6 @@
     -fx-text-fill: #6b7280;
     -fx-border-radius: 8;
     -fx-background-radius: 8;
-    -fx-padding: 12 24 12 24;
     -fx-font-weight: bold;
     -fx-font-size: 14px;
     -fx-min-height: 40;
@@ -172,7 +171,6 @@
     -fx-border-width: 1;
     -fx-border-radius: 8;
     -fx-background-radius: 8;
-    -fx-padding: 12 24 12 24;
     -fx-font-weight: bold;
     -fx-font-size: 14px;
     -fx-min-height: 40;
@@ -268,6 +266,39 @@
 
 .menu-item:focused {
     -fx-background-color: #f3f4f6;
+    -fx-text-fill: #3b82f6;
+}
+
+/* Menu container styles */
+.menu-container {
+    -fx-padding: 16 0 16 0;
+    -fx-background-color: transparent;
+}
+
+/* Expanded menu styles */
+.expanded-menu {
+    -fx-padding: 12 24 12 24;
+    -fx-spacing: 20;
+}
+
+.menu-item-spaced {
+    -fx-padding: 0 20 0 20;
+    -fx-font-size: 15px;
+    -fx-font-weight: 500;
+}
+
+.menu-item-spaced .label {
+    -fx-padding: 8 16 8 16;
+    -fx-font-size: 15px;
+    -fx-font-weight: 500;
+}
+
+.menu-item-spaced:hover {
+    -fx-background-color: rgba(59, 130, 246, 0.1);
+    -fx-background-radius: 8;
+}
+
+.menu-item-spaced:hover .label {
     -fx-text-fill: #3b82f6;
 }
 
