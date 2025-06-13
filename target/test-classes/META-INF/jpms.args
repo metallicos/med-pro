@@ -1,0 +1,4 @@
+--patch-module
+com.medicalappointment=_
+--add-reads
+com.medicalappointment=ALL-UNNAMED

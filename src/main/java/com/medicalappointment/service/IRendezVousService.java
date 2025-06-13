@@ -1,7 +1,7 @@
 
 package com.medicalappointment.service;
 
-import com.medicalappointment.model.RendezVous;
+import com.medicalappointment.models.RendezVous;
 import java.time.LocalDate;
 import java.util.List;
 

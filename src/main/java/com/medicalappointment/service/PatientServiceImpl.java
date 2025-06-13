@@ -1,8 +1,8 @@
 package com.medicalappointment.service;
 
-import com.medicalappointment.dao.IPatientDAO;
-import com.medicalappointment.dao.exception.DAOException;
-import com.medicalappointment.model.Patient;
+import com.medicalappointment.models.dao.IPatientDAO;
+import com.medicalappointment.models.dao.exception.DAOException;
+import com.medicalappointment.models.Patient;
 import com.medicalappointment.service.exception.ServiceException;
 
 import java.util.List;

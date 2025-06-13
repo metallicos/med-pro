@@ -1,6 +1,6 @@
 package com.medicalappointment.service;
 
-import com.medicalappointment.model.User;
+import com.medicalappointment.models.User;
 
 public interface IAuthenticationService {
     User authenticate(String username, String password);

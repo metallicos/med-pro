@@ -1,8 +1,8 @@
 package com.medicalappointment.service;
 
-import com.medicalappointment.dao.IRendezVousDAO;
-import com.medicalappointment.dao.exception.DAOException;
-import com.medicalappointment.model.RendezVous;
+import com.medicalappointment.models.dao.IRendezVousDAO;
+import com.medicalappointment.models.dao.exception.DAOException;
+import com.medicalappointment.models.RendezVous;
 import com.medicalappointment.service.exception.ServiceException;
 
 import java.time.LocalDate;

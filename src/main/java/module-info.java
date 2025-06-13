@@ -5,16 +5,16 @@ module com.medicalappointment {
     requires javafx.base;
 
     opens com.medicalappointment to javafx.fxml;
-    opens com.medicalappointment.controller to javafx.fxml;
-    opens com.medicalappointment.model to javafx.base;
+    opens com.medicalappointment.controllers to javafx.fxml;
+    opens com.medicalappointment.models to javafx.base;
 
     exports com.medicalappointment;
-    exports com.medicalappointment.controller;
-    exports com.medicalappointment.model;
+    exports com.medicalappointment.controllers;
+    exports com.medicalappointment.models;
     exports com.medicalappointment.service;
     exports com.medicalappointment.service.exception;
-    exports com.medicalappointment.dao;
-    exports com.medicalappointment.dao.exception;
+    exports com.medicalappointment.models.dao;
+    exports com.medicalappointment.models.dao.exception;
 }
 
 

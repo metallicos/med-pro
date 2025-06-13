@@ -1,7 +1,7 @@
 
 package com.medicalappointment.service;
 
-import com.medicalappointment.model.Medecin;
+import com.medicalappointment.models.Medecin;
 import java.util.List;
 
 public interface IMedecinService {

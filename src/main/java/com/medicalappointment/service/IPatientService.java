@@ -1,6 +1,6 @@
 package com.medicalappointment.service;
 
-import com.medicalappointment.model.Patient;
+import com.medicalappointment.models.Patient;
 import java.util.List;
 
 public interface IPatientService {

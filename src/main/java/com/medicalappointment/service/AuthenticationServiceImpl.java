@@ -1,7 +1,7 @@
 package com.medicalappointment.service;
 
-import com.medicalappointment.dao.IUserDAO;
-import com.medicalappointment.model.User;
+import com.medicalappointment.models.dao.IUserDAO;
+import com.medicalappointment.models.User;
 import com.medicalappointment.service.exception.ServiceException;
 
 public class AuthenticationServiceImpl implements IAuthenticationService {

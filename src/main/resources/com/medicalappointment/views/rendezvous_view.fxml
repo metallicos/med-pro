@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+
+<VBox alignment="CENTER" spacing="32" styleClass="form-container" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.medicalappointment.controllers.RendezVousController" stylesheets="@javafx11_compatible_style.css">
+    <HBox alignment="CENTER" spacing="24">
+        <ImageView fitHeight="80" fitWidth="80" styleClass="medical-avatar">
+            <image>
+                <Image url="@medical_logo.png" />
+            </image>
+        </ImageView>
+        <VBox alignment="CENTER_LEFT" spacing="8">
+            <Label text="Planning Intelligent" styleClass="form-title"/>
+            <Label text="Système de gestion des consultations médicales nouvelle génération" styleClass="hero-subtitle"/>
+        </VBox>
+    </HBox>
+
+    <VBox spacing="24" styleClass="content-spacing">
+        <HBox spacing="24" alignment="CENTER" styleClass="form-row">
+            <VBox spacing="12" styleClass="form-group">
+                <Label text="Sélectionner le Patient" styleClass="form-label"/>
+                <ComboBox fx:id="patientComboBox" promptText="Choisir un patient" styleClass="form-input"/>
+            </VBox>
+            <VBox spacing="12" styleClass="form-group">
+                <Label text="Médecin Assigné" styleClass="form-label"/>
+                <ComboBox fx:id="medecinComboBox" promptText="Choisir un médecin" styleClass="form-input"/>
+            </VBox>
+        </HBox>
+        
+        <HBox spacing="24" alignment="CENTER" styleClass="form-row">
+            <VBox spacing="12" styleClass="form-group">
+                <Label text="Date de Consultation" styleClass="form-label"/>
+                <DatePicker fx:id="datePicker" promptText="Sélectionner la date" styleClass="form-input"/>
+            </VBox>
+            <VBox spacing="12" styleClass="form-group">
+                <Label text="Heure de RDV" styleClass="form-label"/>
+                <TextField fx:id="timeField" promptText="Ex: 14:30" styleClass="form-input"/>
+            </VBox>
+        </HBox>
+        
+        <VBox spacing="12" styleClass="form-group">
+            <Label text="Motif de la Consultation" styleClass="form-label"/>
+            <TextField fx:id="motifField" promptText="Décrivez brièvement la raison de la visite médicale" styleClass="form-input"/>
+        </VBox>
+    </VBox>
+
+    <HBox spacing="16" alignment="CENTER" styleClass="form-actions">
+        <Button text="Planifier RDV" onAction="#handleAddRendezVous" styleClass="primary-btn"/>
+        <Button text="Modifier RDV" onAction="#handleUpdateRendezVous" styleClass="secondary-btn"/>
+        <Button text="Annuler RDV" onAction="#handleDeleteRendezVous" styleClass="danger-btn"/>
+        <Button text="Effacer Champs" onAction="#handleClearFields" styleClass="clear-btn"/>
+    </HBox>
+
+    <VBox spacing="16" styleClass="content-spacing">
+        <Label text="Planning des Consultations" styleClass="card-title"/>
+        <TableView fx:id="rendezVousTable" VBox.vgrow="ALWAYS" styleClass="modern-table">
+            <columns>
+                <TableColumn fx:id="idColumn" text="ID" prefWidth="70"/>
+                <TableColumn fx:id="patientColumn" text="Patient" prefWidth="160"/>
+                <TableColumn fx:id="medecinColumn" text="Médecin" prefWidth="160"/>
+                <TableColumn fx:id="dateHeureColumn" text="Date et Heure" prefWidth="180"/>
+                <TableColumn fx:id="motifColumn" text="Motif de Consultation" prefWidth="250"/>
+            </columns>
+        </TableView>
+    </VBox>
+
+    <Button text="← Retour au Tableau de Bord" onAction="#handleBackToMain" styleClass="back-btn"/>
+</VBox>
+
+

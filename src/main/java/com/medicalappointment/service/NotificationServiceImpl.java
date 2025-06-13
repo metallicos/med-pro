@@ -1,7 +1,7 @@
 
 package com.medicalappointment.service;
 
-import com.medicalappointment.model.RendezVous;
+import com.medicalappointment.models.RendezVous;
 
 public class NotificationServiceImpl implements INotificationService {
 
