@@ -56,59 +56,44 @@ public class MedecinController extends BaseController {
         }
     }    @FXML
     public void initialize() {
-        System.out.println("Initializing MedecinController...");
-        
         // Initialize table columns with explicit cell value factories
         idColumn.setCellValueFactory(cellData -> {
             Integer id = cellData.getValue().getId();
-            System.out.println("Setting ID cell value: " + id);
             return new javafx.beans.property.SimpleIntegerProperty(id).asObject();
         });
         
         nomColumn.setCellValueFactory(cellData -> {
             String nom = cellData.getValue().getNom();
-            System.out.println("Setting Nom cell value: " + nom);
             return new javafx.beans.property.SimpleStringProperty(nom);
         });
         
         prenomColumn.setCellValueFactory(cellData -> {
             String prenom = cellData.getValue().getPrenom();
-            System.out.println("Setting Prenom cell value: " + prenom);
             return new javafx.beans.property.SimpleStringProperty(prenom);
         });
         
         specialiteColumn.setCellValueFactory(cellData -> {
             String specialite = cellData.getValue().getSpecialite();
-            System.out.println("Setting Specialite cell value: " + specialite);
             return new javafx.beans.property.SimpleStringProperty(specialite);
         });
         
         numeroLicenceColumn.setCellValueFactory(cellData -> {
             String numeroLicence = cellData.getValue().getNumeroLicence();
-            System.out.println("Setting NumeroLicence cell value: " + numeroLicence);
             return new javafx.beans.property.SimpleStringProperty(numeroLicence);
         });
 
         medecinList = FXCollections.observableArrayList();
         medecinTable.setItems(medecinList);
-        System.out.println("Table items set to observable list");
 
         loadMedecins();
 
         medecinTable.getSelectionModel().selectedItemProperty().addListener(
                 (observable, oldValue, newValue) -> showMedecinDetails(newValue));
-        
-        System.out.println("MedecinController initialization complete");
-    }private void loadMedecins() {
+    }    private void loadMedecins() {
         try {
             medecinList.clear();
             List<Medecin> medecins = medecinService.getAllMedecins();
-            System.out.println("Loaded " + medecins.size() + " medecins from database");
-            for (Medecin m : medecins) {
-                System.out.println("Medecin: " + m.getId() + " - " + m.getNom() + " " + m.getPrenom());
-            }
             medecinList.addAll(medecins);
-            System.out.println("Observable list size: " + medecinList.size());
             
             // Force table refresh
             medecinTable.refresh();
@@ -136,9 +121,7 @@ public class MedecinController extends BaseController {
                     specialiteField.getText(),
                     numeroLicenceField.getText()
             );
-            System.out.println("Adding medecin: " + newMedecin.getNom() + " " + newMedecin.getPrenom());
             medecinService.addMedecin(newMedecin);
-            System.out.println("Medecin added successfully with ID: " + newMedecin.getId());
             showAlert(Alert.AlertType.INFORMATION, "Success", "Medecin added successfully!");
             loadMedecins();
             clearFields();

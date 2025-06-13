@@ -71,51 +71,41 @@ public class RendezVousController extends BaseController {
         }
     }    @FXML
     public void initialize() {
-        System.out.println("Initializing RendezVousController...");
-        
         idColumn.setCellValueFactory(cellData -> {
             Integer id = cellData.getValue().getId();
-            System.out.println("Setting ID cell value: " + id);
             return new javafx.beans.property.SimpleIntegerProperty(id).asObject();
         });
         
         patientColumn.setCellValueFactory(cellData -> {
             Patient patient = cellData.getValue().getPatient();
             String patientName = patient.getNom() + " " + patient.getPrenom();
-            System.out.println("Setting Patient cell value: " + patientName);
             return new javafx.beans.property.SimpleStringProperty(patientName);
         });
         
         medecinColumn.setCellValueFactory(cellData -> {
             Medecin medecin = cellData.getValue().getMedecin();
             String medecinName = medecin.getNom() + " " + medecin.getPrenom();
-            System.out.println("Setting Medecin cell value: " + medecinName);
             return new javafx.beans.property.SimpleStringProperty(medecinName);
         });
         
         dateHeureColumn.setCellValueFactory(cellData -> {
             java.time.LocalDateTime dateHeure = cellData.getValue().getDateHeure();
-            System.out.println("Setting DateHeure cell value: " + dateHeure);
             return new javafx.beans.property.SimpleObjectProperty<>(dateHeure);
         });
         
         motifColumn.setCellValueFactory(cellData -> {
             String motif = cellData.getValue().getMotif();
-            System.out.println("Setting Motif cell value: " + motif);
             return new javafx.beans.property.SimpleStringProperty(motif);
         });
 
         rendezVousList = FXCollections.observableArrayList();
         rendezVousTable.setItems(rendezVousList);
-        System.out.println("Table items set to observable list");
 
         loadPatientsAndMedecins();
         loadRendezVous();
 
         rendezVousTable.getSelectionModel().selectedItemProperty().addListener(
                 (observable, oldValue, newValue) -> showRendezVousDetails(newValue));
-        
-        System.out.println("RendezVousController initialization complete");
     }
 
     private void loadPatientsAndMedecins() {
@@ -131,12 +121,7 @@ public class RendezVousController extends BaseController {
         try {
             rendezVousList.clear();
             List<RendezVous> rendezVous = rendezVousService.getAllRendezVous();
-            System.out.println("Loaded " + rendezVous.size() + " rendez-vous from database");
-            for (RendezVous rv : rendezVous) {
-                System.out.println("RendezVous: " + rv.getId() + " - " + rv.getPatient().getNom() + " with " + rv.getMedecin().getNom());
-            }
             rendezVousList.addAll(rendezVous);
-            System.out.println("Observable list size: " + rendezVousList.size());
             
             // Force table refresh
             rendezVousTable.refresh();
@@ -184,17 +169,14 @@ public class RendezVousController extends BaseController {
                     selectedPatient,
                     selectedMedecin,
                     dateTime,
-                    motif
-            );
-            System.out.println("Adding rendez-vous: " + selectedPatient.getNom() + " with " + selectedMedecin.getNom());
-            rendezVousService.addRendezVous(newRendezVous);
-            System.out.println("RendezVous added successfully with ID: " + newRendezVous.getId());
-            showAlert(Alert.AlertType.INFORMATION, "Success", "Rendez-vous added successfully!");
-            loadRendezVous();
-            clearFields();
-        } catch (ServiceException e) {
-            showAlert(Alert.AlertType.ERROR, "Error", "Failed to add rendez-vous: " + e.getMessage());
-        }
+                    motif                );
+                rendezVousService.addRendezVous(newRendezVous);
+                showAlert(Alert.AlertType.INFORMATION, "Success", "Rendez-vous added successfully!");
+                loadRendezVous();
+                clearFields();
+            } catch (ServiceException e) {
+                showAlert(Alert.AlertType.ERROR, "Error", "Failed to add rendez-vous: " + e.getMessage());
+            }
     }
 
     @FXML
