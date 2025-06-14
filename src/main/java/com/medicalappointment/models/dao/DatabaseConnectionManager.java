@@ -7,7 +7,7 @@ import java.sql.SQLException;
 public class DatabaseConnectionManager implements IDatabaseConnectionManager {
     private static final String DB_URL = "jdbc:mysql://localhost:3306/medical_appointment_db";
     private static final String DB_USER = "root";
-    private static final String DB_PASSWORD = "Root123!"; // TODO: Use a more secure way to handle passwords
+    private static final String DB_PASSWORD = "Root123!"; 
 
     public DatabaseConnectionManager() throws SQLException {
         try {

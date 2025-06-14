@@ -552,3 +552,54 @@
     -fx-text-fill: #ffffff;
     -fx-font-weight: bold;
 }
+
+/* Spinner specific styling for glassmorphism design */
+.spinner {
+    -fx-background-color: rgba(255, 255, 255, 0.15);
+    -fx-border-color: rgba(255, 255, 255, 0.3);
+    -fx-border-width: 1;
+    -fx-border-radius: 12;
+    -fx-background-radius: 12;
+    -fx-font-size: 14px;
+    -fx-text-fill: #fff;
+    -fx-min-height: 40;
+    -fx-max-width: 80;
+    -fx-pref-width: 80;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 5, 0.2, 0, 2);
+}
+
+.spinner:focused {
+    -fx-border-color: rgba(255, 255, 255, 0.6);
+    -fx-background-color: rgba(255, 255, 255, 0.25);
+    -fx-effect: dropshadow(gaussian, rgba(102, 126, 234, 0.3), 10, 0.4, 0, 0);
+}
+
+.spinner .text-field {
+    -fx-alignment: center;
+    -fx-text-fill: #fff;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-background-color: transparent;
+}
+
+.spinner .increment-arrow-button, .spinner .decrement-arrow-button {
+    -fx-background-color: rgba(255, 255, 255, 0.1);
+    -fx-border-color: rgba(255, 255, 255, 0.2);
+    -fx-background-radius: 0 12 12 0;
+}
+
+.spinner .increment-arrow-button:hover, .spinner .decrement-arrow-button:hover {
+    -fx-background-color: rgba(255, 255, 255, 0.2);
+}
+
+.form-input, .form-group .text-field, .form-group .date-picker, .form-group .spinner {
+    -fx-background-color: rgba(255, 255, 255, 0.15);
+    -fx-border-color: rgba(255, 255, 255, 0.3);
+    -fx-border-width: 1;
+    -fx-border-radius: 12;
+    -fx-background-radius: 12;
+    -fx-padding: 12 16 12 16;
+    -fx-font-size: 14px;
+    -fx-text-fill: #fff;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 5, 0.2, 0, 2);
+}

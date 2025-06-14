@@ -11,7 +11,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.geometry.Insets?>
 
-<StackPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" 
+<StackPane xmlns="http://javafx.com/javafx/11" xmlns:fx="http://javafx.com/fxml/1" 
            fx:controller="com.medicalappointment.controllers.LoginController"
            styleClass="root">
     

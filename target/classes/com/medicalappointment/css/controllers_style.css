@@ -68,7 +68,7 @@
 }
 
 /* Champs de saisie compatibles JavaFX 11 */
-.form-input, .form-group .text-field, .form-group .date-picker, .form-group .combo-box {
+.form-input, .form-group .text-field, .form-group .date-picker, .form-group .combo-box, .form-group .spinner {
     -fx-background-color: #ffffff;
     -fx-border-color: #d1d5db;
     -fx-border-width: 1;
@@ -80,14 +80,50 @@
     -fx-min-height: 40;
 }
 
-.form-input:focused, .form-group .text-field:focused, .form-group .date-picker:focused, .form-group .combo-box:focused {
+.form-input:focused, .form-group .text-field:focused, .form-group .date-picker:focused, .form-group .combo-box:focused, .form-group .spinner:focused {
     -fx-border-color: #3b82f6;
     -fx-background-color: #ffffff;
     -fx-effect: dropshadow(gaussian, rgba(59, 130, 246, 0.2), 8, 0.2, 0, 0);
 }
 
-.form-input:hover, .form-group .text-field:hover, .form-group .date-picker:hover, .form-group .combo-box:hover {
+.form-input:hover, .form-group .text-field:hover, .form-group .date-picker:hover, .form-group .combo-box:hover, .form-group .spinner:hover {
     -fx-border-color: #9ca3af;
+}
+
+/* Spinner specific styling */
+.spinner {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #d1d5db;
+    -fx-border-width: 1;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-font-size: 14px;
+    -fx-text-fill: #374151;
+    -fx-min-height: 40;
+    -fx-max-width: 80;
+    -fx-pref-width: 80;
+}
+
+.spinner:focused {
+    -fx-border-color: #3b82f6;
+    -fx-effect: dropshadow(gaussian, rgba(59, 130, 246, 0.2), 8, 0.2, 0, 0);
+}
+
+.spinner .text-field {
+    -fx-alignment: center;
+    -fx-text-fill: #374151;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+}
+
+.spinner .increment-arrow-button, .spinner .decrement-arrow-button {
+    -fx-background-color: #f8fafc;
+    -fx-border-color: #d1d5db;
+    -fx-background-radius: 0 8 8 0;
+}
+
+.spinner .increment-arrow-button:hover, .spinner .decrement-arrow-button:hover {
+    -fx-background-color: #e2e8f0;
 }
 
 .form-actions {
