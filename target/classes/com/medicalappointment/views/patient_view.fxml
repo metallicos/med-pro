@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TableColumn?>
@@ -11,18 +12,37 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.image.Image?>
 
-<VBox alignment="CENTER" spacing="32" styleClass="form-container" xmlns="http://javafx.com/javafx/11" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.medicalappointment.controllers.PatientController" stylesheets="@../css/controllers_style.css">
-    <HBox alignment="CENTER" spacing="24">
-        <ImageView fitHeight="80" fitWidth="80" styleClass="medical-avatar">
-            <image>
-                <Image url="@../images/patient_avatar.png" />
-            </image>
-        </ImageView>
-        <VBox alignment="CENTER_LEFT" spacing="8">
-            <Label text="Gestion des Patients" styleClass="form-title"/>
-            <Label text="Interface moderne pour la gestion sécurisée des dossiers patients" styleClass="hero-subtitle"/>
-        </VBox>
-    </HBox>
+<BorderPane xmlns="http://javafx.com/javafx/11" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.medicalappointment.controllers.PatientController" stylesheets="@../css/controllers_style.css">
+    <!-- Hero Section at the top -->
+    <top>
+        <HBox alignment="CENTER" spacing="24" styleClass="hero-section">
+            <ImageView fitHeight="96" fitWidth="96" styleClass="hero-logo">
+                <image>
+                    <Image url="@../images/medical_logo.png" />
+                </image>
+            </ImageView>
+            <VBox alignment="CENTER_LEFT" spacing="8">
+                <Label text="MediCare Pro" styleClass="hero-title" />
+                <Label text="Gestion des Patients" styleClass="hero-subtitle" />
+            </VBox>
+        </HBox>
+    </top>
+    
+    <!-- Main content in center -->
+    <center>
+        <VBox alignment="CENTER" spacing="32" styleClass="form-container">
+            <!-- Page Header -->
+            <HBox alignment="CENTER" spacing="24">
+                <ImageView fitHeight="64" fitWidth="64" styleClass="medical-avatar">
+                    <image>
+                        <Image url="@../images/patient_avatar.png" />
+                    </image>
+                </ImageView>
+                <VBox alignment="CENTER_LEFT" spacing="8">
+                    <Label text="Gestion des Patients" styleClass="form-title"/>
+                    <Label text="Interface moderne pour la gestion sécurisée des dossiers patients" styleClass="hero-subtitle"/>
+                </VBox>
+            </HBox>
 
     <VBox spacing="24" styleClass="content-spacing">
         <HBox spacing="24" alignment="CENTER" styleClass="form-row">
@@ -74,6 +94,8 @@
     </VBox>
 
     <Button text="← Retour au Tableau de Bord" onAction="#handleBackToMain" styleClass="back-btn"/>
-</VBox>
+        </VBox>
+    </center>
+</BorderPane>
 
 

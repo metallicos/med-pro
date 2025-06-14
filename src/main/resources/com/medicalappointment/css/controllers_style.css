@@ -341,9 +341,7 @@
 /* Section héro simplifiée */
 .hero-section {
     -fx-background-color: #3b82f6;
-    -fx-border-radius: 16;
-    -fx-background-radius: 16;
-    -fx-padding: 32 32 32 32;
+    -fx-padding: 24 24 24 24;
     -fx-effect: dropshadow(gaussian, rgba(59,130,246,0.2), 16, 0.2, 0, 6);
     -fx-spacing: 16;
 }

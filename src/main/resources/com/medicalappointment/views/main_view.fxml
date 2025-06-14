@@ -102,7 +102,7 @@
     
     <bottom>
         <HBox alignment="CENTER" spacing="16" styleClass="footer">
-            <Label text="© 2023 MediCare Pro - Tous droits réservés" styleClass="footer-text"/>
+            <Label text="© 2025 MediCare Pro - Tous droits réservés" styleClass="footer-text"/>
         </HBox>
     </bottom>
 </BorderPane>
