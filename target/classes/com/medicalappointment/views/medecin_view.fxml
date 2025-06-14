@@ -10,7 +10,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.image.Image?>
 
-<VBox alignment="CENTER" spacing="32" styleClass="form-container" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.medicalappointment.controllers.MedecinController" stylesheets="@../css/javafx11_compatible_style.css">
+<VBox alignment="CENTER" spacing="32" styleClass="form-container" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.medicalappointment.controllers.MedecinController" stylesheets="@../css/controllers_style.css">
     <HBox alignment="CENTER" spacing="24">
         <ImageView fitHeight="80" fitWidth="80" styleClass="medical-avatar">
             <image>
@@ -55,14 +55,13 @@
     </HBox>
 
     <VBox spacing="16" styleClass="content-spacing">
-        <Label text="Equipe Medicale Enregistree" styleClass="card-title"/>
-        <TableView fx:id="medecinTable" VBox.vgrow="ALWAYS" styleClass="modern-table">
+        <Label text="Equipe Medicale Enregistree" styleClass="card-title"/>        <TableView fx:id="medecinTable" VBox.vgrow="ALWAYS">
             <columns>
-                <TableColumn fx:id="idColumn" text="ID" prefWidth="80"/>
-                <TableColumn fx:id="nomColumn" text="Nom" prefWidth="140"/>
-                <TableColumn fx:id="prenomColumn" text="Prénom" prefWidth="140"/>
-                <TableColumn fx:id="specialiteColumn" text="Spécialité" prefWidth="200"/>
-                <TableColumn fx:id="numeroLicenceColumn" text="N° d'Ordre" prefWidth="160"/>
+                <TableColumn fx:id="idColumn" text="ID" prefWidth="80" minWidth="60"/>
+                <TableColumn fx:id="nomColumn" text="Nom" prefWidth="140" minWidth="100"/>
+                <TableColumn fx:id="prenomColumn" text="Prénom" prefWidth="140" minWidth="100"/>
+                <TableColumn fx:id="specialiteColumn" text="Spécialité" prefWidth="200" minWidth="150"/>
+                <TableColumn fx:id="numeroLicenceColumn" text="N° d'Ordre" prefWidth="160" minWidth="120"/>
             </columns>
         </TableView>
     </VBox>

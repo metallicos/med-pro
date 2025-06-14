@@ -12,6 +12,7 @@ com/medicalappointment/models/dao/PatientDAOImpl.class
 com/medicalappointment/models/dao/UserDAOImpl.class
 com/medicalappointment/controllers/ControllerFactory.class
 com/medicalappointment/models/dao/MedecinDAOImpl.class
+com/medicalappointment/controllers/BaseController.class
 com/medicalappointment/service/RendezVousServiceImpl.class
 com/medicalappointment/models/dao/IDatabaseConnectionManager.class
 com/medicalappointment/service/IPatientService.class

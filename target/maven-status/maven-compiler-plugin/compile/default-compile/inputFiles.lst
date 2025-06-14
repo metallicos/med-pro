@@ -32,3 +32,4 @@
 /home/abdou/Public/sites/medapp/MedicalAppointmentApp/src/main/java/com/medicalappointment/service/IPatientService.java
 /home/abdou/Public/sites/medapp/MedicalAppointmentApp/src/main/java/module-info.java
 /home/abdou/Public/sites/medapp/MedicalAppointmentApp/src/main/java/com/medicalappointment/models/User.java
+/home/abdou/Public/sites/medapp/MedicalAppointmentApp/src/main/java/com/medicalappointment/controllers/BaseController.java
