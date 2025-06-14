@@ -77,6 +77,55 @@ public class RendezVousController extends BaseController {
         hourSpinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 23, 8));
         minuteSpinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 59, 0));
         
+        // Setup ComboBox cell factories to display only names
+        patientComboBox.setCellFactory(listView -> new ListCell<Patient>() {
+            @Override
+            protected void updateItem(Patient patient, boolean empty) {
+                super.updateItem(patient, empty);
+                if (empty || patient == null) {
+                    setText(null);
+                } else {
+                    setText(patient.getNom() + " " + patient.getPrenom());
+                }
+            }
+        });
+        
+        patientComboBox.setButtonCell(new ListCell<Patient>() {
+            @Override
+            protected void updateItem(Patient patient, boolean empty) {
+                super.updateItem(patient, empty);
+                if (empty || patient == null) {
+                    setText(null);
+                } else {
+                    setText(patient.getNom() + " " + patient.getPrenom());
+                }
+            }
+        });
+        
+        medecinComboBox.setCellFactory(listView -> new ListCell<Medecin>() {
+            @Override
+            protected void updateItem(Medecin medecin, boolean empty) {
+                super.updateItem(medecin, empty);
+                if (empty || medecin == null) {
+                    setText(null);
+                } else {
+                    setText("Dr. " + medecin.getNom() + " " + medecin.getPrenom());
+                }
+            }
+        });
+        
+        medecinComboBox.setButtonCell(new ListCell<Medecin>() {
+            @Override
+            protected void updateItem(Medecin medecin, boolean empty) {
+                super.updateItem(medecin, empty);
+                if (empty || medecin == null) {
+                    setText(null);
+                } else {
+                    setText("Dr. " + medecin.getNom() + " " + medecin.getPrenom());
+                }
+            }
+        });
+        
         idColumn.setCellValueFactory(cellData -> {
             Integer id = cellData.getValue().getId();
             return new javafx.beans.property.SimpleIntegerProperty(id).asObject();

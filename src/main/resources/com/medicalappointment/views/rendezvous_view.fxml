@@ -28,13 +28,13 @@
 
     <VBox spacing="24" styleClass="content-spacing">
         <HBox spacing="24" alignment="CENTER" styleClass="form-row">
-            <VBox spacing="12" styleClass="form-group">
+            <VBox spacing="12" styleClass="">
                 <Label text="Sélectionner le Patient" styleClass="form-label"/>
-                <ComboBox fx:id="patientComboBox" promptText="Choisir un patient" styleClass="form-input"/>
+                <ComboBox fx:id="patientComboBox" promptText="Choisir un patient" styleClass=""/>
             </VBox>
-            <VBox spacing="12" styleClass="form-group">
+            <VBox spacing="12" styleClass="">
                 <Label text="Médecin Assigné" styleClass="form-label"/>
-                <ComboBox fx:id="medecinComboBox" promptText="Choisir un médecin" styleClass="form-input"/>
+                <ComboBox fx:id="medecinComboBox" promptText="Choisir un médecin" styleClass=""/>
             </VBox>
         </HBox>
         

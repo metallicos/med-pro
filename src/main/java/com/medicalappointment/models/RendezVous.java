@@ -60,13 +60,8 @@ public class RendezVous {
     }    
     @Override
     public String toString() {
-        return "RendezVous{" +
-               "id=" + id +
-               ", patient=" + patient.getNom() + " " + patient.getPrenom() +
-               ", medecin=" + medecin.getNom() + " " + medecin.getPrenom() +
-               ", dateHeure=" + dateHeure +
-               ", motif=\'" + motif + '\'' +
-               '}';
+        return patient.getNom() + " " + patient.getPrenom() + " - Dr. " + medecin.getNom() + " " + medecin.getPrenom() + 
+               " (" + dateHeure.toLocalDate() + " à " + dateHeure.toLocalTime() + ")";
     }
 }
 

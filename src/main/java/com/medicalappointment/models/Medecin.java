@@ -59,13 +59,7 @@ public class Medecin {
 
     @Override
     public String toString() {
-        return "Medecin{" +
-               "id=" + id +
-               ", nom=\'" + nom + '\'' +
-               ", prenom=\'" + prenom + '\'' +
-               ", specialite=\'" + specialite + '\'' +
-               ", numeroLicence=\'" + numeroLicence + '\'' +
-               '}';
+        return "Dr. " + nom + " " + prenom + " (" + specialite + ")";
     }
 }
 
