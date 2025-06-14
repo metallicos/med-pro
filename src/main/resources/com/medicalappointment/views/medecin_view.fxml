@@ -75,7 +75,17 @@
     </HBox>
 
     <VBox spacing="16" styleClass="content-spacing">
-        <Label text="Equipe Medicale Enregistree" styleClass="card-title"/>        <TableView fx:id="medecinTable" VBox.vgrow="ALWAYS">
+        <Label text="Equipe Medicale Enregistree" styleClass="card-title"/>
+        
+        <!-- Search field -->
+        <HBox spacing="12" alignment="CENTER_RIGHT">
+            <Label text="Rechercher:" styleClass="form-label"/>
+            <TextField fx:id="searchField" promptText="Rechercher par nom, prénom, spécialité..." styleClass="form-input" prefWidth="400"/>
+            <Button text="Rechercher" onAction="#handleSearchMedecins" styleClass="primary-btn"/>
+            <Button text="Tout Afficher" onAction="#handleShowAllMedecins" styleClass="secondary-btn"/>
+        </HBox>
+        
+        <TableView fx:id="medecinTable" VBox.vgrow="ALWAYS">
             <columns>
                 <TableColumn fx:id="idColumn" text="ID" prefWidth="80" minWidth="60"/>
                 <TableColumn fx:id="nomColumn" text="Nom" prefWidth="140" minWidth="100"/>

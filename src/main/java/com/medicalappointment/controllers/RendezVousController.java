@@ -16,6 +16,7 @@ import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class RendezVousController extends BaseController {
 
@@ -31,6 +32,8 @@ public class RendezVousController extends BaseController {
     private Spinner<Integer> minuteSpinner;
     @FXML
     private TextField motifField;
+    @FXML
+    private TextField searchField;
     @FXML
     private TableView<RendezVous> rendezVousTable;
     @FXML
@@ -296,6 +299,50 @@ public class RendezVousController extends BaseController {
         minuteSpinner.getValueFactory().setValue(0);
         motifField.clear();
         rendezVousTable.getSelectionModel().clearSelection();
+    }
+
+    /**
+     * Handle search functionality for rendez-vous
+     */
+    @FXML
+    private void handleSearchRendezVous() {
+        String searchText = searchField.getText().trim();
+        if (searchText.isEmpty()) {
+            handleShowAllRendezVous();
+            return;
+        }
+
+        try {
+            List<RendezVous> allRendezVous = rendezVousService.getAllRendezVous();
+            List<RendezVous> filteredRendezVous = allRendezVous.stream()
+                .filter(rdv -> 
+                    rdv.getPatient().getNom().toLowerCase().contains(searchText.toLowerCase()) ||
+                    rdv.getPatient().getPrenom().toLowerCase().contains(searchText.toLowerCase()) ||
+                    rdv.getMedecin().getNom().toLowerCase().contains(searchText.toLowerCase()) ||
+                    rdv.getMedecin().getPrenom().toLowerCase().contains(searchText.toLowerCase()) ||
+                    rdv.getMotif().toLowerCase().contains(searchText.toLowerCase())
+                )
+                .collect(Collectors.toList());
+            
+            rendezVousList.clear();
+            rendezVousList.addAll(filteredRendezVous);
+            
+            if (filteredRendezVous.isEmpty()) {
+                showAlert(Alert.AlertType.INFORMATION, "Résultats de recherche", 
+                    "Aucun rendez-vous trouvé pour \"" + searchText + "\"");
+            }
+        } catch (ServiceException e) {
+            showAlert(Alert.AlertType.ERROR, "Error", "Failed to search rendez-vous: " + e.getMessage());
+        }
+    }
+
+    /**
+     * Show all rendez-vous (clear search filter)
+     */
+    @FXML
+    private void handleShowAllRendezVous() {
+        searchField.clear();
+        loadRendezVous();
     }
 
     @FXML

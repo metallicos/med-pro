@@ -87,7 +87,16 @@
     </HBox>
 
     <VBox spacing="16" styleClass="content-spacing">
-        <Label text="Planning des Consultations" styleClass="card-title"/>        
+        <Label text="Planning des Consultations" styleClass="card-title"/>
+        
+        <!-- Search field -->
+        <HBox spacing="12" alignment="CENTER_RIGHT">
+            <Label text="Rechercher:" styleClass="form-label"/>
+            <TextField fx:id="searchField" promptText="Rechercher par patient, médecin, motif..." styleClass="form-input" prefWidth="400"/>
+            <Button text="Rechercher" onAction="#handleSearchRendezVous" styleClass="primary-btn"/>
+            <Button text="Tout Afficher" onAction="#handleShowAllRendezVous" styleClass="secondary-btn"/>
+        </HBox>
+        
         <TableView fx:id="rendezVousTable" VBox.vgrow="ALWAYS">
             <columns>
                 <TableColumn fx:id="idColumn" text="ID" prefWidth="70" minWidth="50"/>

@@ -10,6 +10,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class PatientController extends BaseController {
 
@@ -23,6 +24,8 @@ public class PatientController extends BaseController {
     private TextField adresseField;
     @FXML
     private TextField telephoneField;
+    @FXML
+    private TextField searchField;
     @FXML
     private TableView<Patient> patientTable;
     @FXML
@@ -197,6 +200,49 @@ public class PatientController extends BaseController {
         adresseField.clear();
         telephoneField.clear();
         patientTable.getSelectionModel().clearSelection();
+    }
+
+    /**
+     * Handle search functionality for patients
+     */
+    @FXML
+    private void handleSearchPatients() {
+        String searchText = searchField.getText().trim();
+        if (searchText.isEmpty()) {
+            handleShowAllPatients();
+            return;
+        }
+
+        try {
+            List<Patient> allPatients = patientService.getAllPatients();
+            List<Patient> filteredPatients = allPatients.stream()
+                .filter(patient -> 
+                    patient.getNom().toLowerCase().contains(searchText.toLowerCase()) ||
+                    patient.getPrenom().toLowerCase().contains(searchText.toLowerCase()) ||
+                    patient.getTelephone().toLowerCase().contains(searchText.toLowerCase()) ||
+                    patient.getAdresse().toLowerCase().contains(searchText.toLowerCase())
+                )
+                .collect(Collectors.toList());
+            
+            patientList.clear();
+            patientList.addAll(filteredPatients);
+            
+            if (filteredPatients.isEmpty()) {
+                showAlert(Alert.AlertType.INFORMATION, "Résultats de recherche", 
+                    "Aucun patient trouvé pour \"" + searchText + "\"");
+            }
+        } catch (ServiceException e) {
+            showAlert(Alert.AlertType.ERROR, "Error", "Failed to search patients: " + e.getMessage());
+        }
+    }
+
+    /**
+     * Show all patients (clear search filter)
+     */
+    @FXML
+    private void handleShowAllPatients() {
+        searchField.clear();
+        loadPatients();
     }
 
     @FXML

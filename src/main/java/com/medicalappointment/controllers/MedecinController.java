@@ -10,6 +10,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class MedecinController extends BaseController {
 
@@ -21,6 +22,8 @@ public class MedecinController extends BaseController {
     private TextField specialiteField;
     @FXML
     private TextField numeroLicenceField;
+    @FXML
+    private TextField searchField;
     @FXML
     private TableView<Medecin> medecinTable;
     @FXML
@@ -180,7 +183,52 @@ public class MedecinController extends BaseController {
         specialiteField.clear();
         numeroLicenceField.clear();
         medecinTable.getSelectionModel().clearSelection();
-    }    @FXML
+    }
+
+    /**
+     * Handle search functionality for medecins
+     */
+    @FXML
+    private void handleSearchMedecins() {
+        String searchText = searchField.getText().trim();
+        if (searchText.isEmpty()) {
+            handleShowAllMedecins();
+            return;
+        }
+
+        try {
+            List<Medecin> allMedecins = medecinService.getAllMedecins();
+            List<Medecin> filteredMedecins = allMedecins.stream()
+                .filter(medecin -> 
+                    medecin.getNom().toLowerCase().contains(searchText.toLowerCase()) ||
+                    medecin.getPrenom().toLowerCase().contains(searchText.toLowerCase()) ||
+                    medecin.getSpecialite().toLowerCase().contains(searchText.toLowerCase()) ||
+                    medecin.getNumeroLicence().toLowerCase().contains(searchText.toLowerCase())
+                )
+                .collect(Collectors.toList());
+            
+            medecinList.clear();
+            medecinList.addAll(filteredMedecins);
+            
+            if (filteredMedecins.isEmpty()) {
+                showAlert(Alert.AlertType.INFORMATION, "Résultats de recherche", 
+                    "Aucun médecin trouvé pour \"" + searchText + "\"");
+            }
+        } catch (ServiceException e) {
+            showAlert(Alert.AlertType.ERROR, "Error", "Failed to search medecins: " + e.getMessage());
+        }
+    }
+
+    /**
+     * Show all medecins (clear search filter)
+     */
+    @FXML
+    private void handleShowAllMedecins() {
+        searchField.clear();
+        loadMedecins();
+    }
+
+    @FXML
     private void handleBackToMain(ActionEvent event) {
         loadView("/com/medicalappointment/views/main_view.fxml", "Medical Appointment Management", event.getSource());
     }    @Override
